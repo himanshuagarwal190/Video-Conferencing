@@ -35,12 +35,15 @@ video {
 .chat {
     height: 88%;
     width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     position: absolute;
     right: 0px;
     background-color: rgb(37, 35, 35);
 }
 
-.chat form {
+.chat .message-input {
     position: absolute;
     bottom: 0px;
     width: 100%;
@@ -48,20 +51,43 @@ video {
     font-size: 0px;
 }
 
-.chat-head p {
-    font-size: 25px;
-    text-align: center;
-    color: white;
+.chat-head {
+    position: relative;
+    top: 0px;
+    width: 80%;
 }
 
-form input[type="text"] {
+.chat-head p {
+    width: 120%;
+    font-size: 25px;
+    text-align: center;
+    color: white;  
+    padding: 10px 0px;
+}
+
+.chat .chat-container div p {
+    width: 80%;
+    color: white;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    margin: 7px;
+}
+
+.chat-container {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 85%;
+}
+
+div input[type="text"] {
     width: 80%;
     height: 100%;
     text-indent: 7px;
-    
 }
 
-form input[type="submit"] {
+div input[type="submit"] {
     width: 20%;
     height: 100%;
     display: inline;
@@ -152,14 +178,14 @@ form input[type="submit"] {
     border-radius: 25px;
 }
 
-form input[name="username"] {
+div input[name="username"], div input[name="roomname"] {
     width: 100%;
     height: 50px;
     text-indent: 10px;
     margin-bottom: 50px;
 }
 
-form input[value="Enter"] {
+div input[value="Enter"] {
     width: 100%;
     height: 50px;
 }

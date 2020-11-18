@@ -5,16 +5,30 @@ const bodyParser = require('body-parser')
 const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended: false}));
 var port = process.env.port || 3000
 
+//Render Index page
 app.get('/', (req, res) => {
     res.render('index')
 })
 
-app.get('/room', (req, res) => {
+//Get username and roomname from form and pass it to room
+app.post('/room', (req, res) => {
+    roomname = req.body.roomname;
+    username = req.body.username;
+    res.redirect(`/room?username=${username}&roomname=${roomname}`)
+})
+
+//Rooms
+app.get('/room', (req, res)=>{
     res.render('room')
 })
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+//Start Server
+const server = app.listen(port, () => {
+    console.log(`Server Running on port ${port}`)
 })
+
+const io = socket(server);
+require('./utils/socket')(io);

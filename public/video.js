@@ -1,6 +1,5 @@
 var divVideo = document.querySelector('.video')
 var endCall = document.querySelector('.end-call')
-
 var constraints = {audio: true, video: {width: 250, height: 250}}
 
 function getMedia(constraints) {
